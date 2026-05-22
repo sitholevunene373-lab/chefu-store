@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "CheFu Store",
-  description: "CheFu Store - Your one-stop app store for all apps",
+  description: "The official CheFu platform for discovering and downloading trusted desktop applications across all major operating systems.",
 };
 
 export default function RootLayout({
