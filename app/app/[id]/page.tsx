@@ -1,25 +1,24 @@
 'use client';
 
-import { useState } from 'react';
-import type { Metadata } from 'next';
+import { Apple, ArrowLeft, CheckCircle, Download, Globe, Monitor, Star } from 'lucide-react';
+import { motion } from 'motion/react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { ArrowLeft, Download, Star, Monitor, Apple, Globe, CheckCircle } from 'lucide-react';
+import { use } from 'react';
+import { toast } from 'sonner';
+import { Badge } from '../../components/ui/badge';
 import { Button } from '../../components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '../../components/ui/card';
-import { Badge } from '../../components/ui/badge';
-import { Separator } from '../../components/ui/separator';
-import { Progress } from '../../components/ui/progress';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '../../components/ui/carousel';
+import { Progress } from '../../components/ui/progress';
+import { Separator } from '../../components/ui/separator';
 import { apps } from '../../data/mockData';
-import { motion } from 'motion/react';
-import { toast } from 'sonner';
 import { OSType } from '@/app/types';
 
 interface AppDetailPageProps {
-  params: {
+  params: Promise<{
     id: string;
-  };
+  }>;
 }
 
 const OSIcon = ({ os }: { os: OSType }) => {
@@ -35,7 +34,8 @@ const OSIcon = ({ os }: { os: OSType }) => {
 
 export default function AppDetailPage({ params }: AppDetailPageProps) {
   const router = useRouter();
-  const app = apps.find((a) => a.id === params.id);
+  const { id } = use(params);
+  const app = apps.find((a) => String(a.id) === id);
 
   if (!app) {
     return (
@@ -228,9 +228,10 @@ export default function AppDetailPage({ params }: AppDetailPageProps) {
               size="lg"
               className="w-full bg-primary hover:bg-primary/90"
               onClick={handleInstall}
+              disabled={app.installed}
             >
               <Download className="w-4 h-4 mr-2" />
-              Install Now
+              {app.installed ? 'Installed' : 'Install Now'} 
             </Button>
 
             {app.installed && (
