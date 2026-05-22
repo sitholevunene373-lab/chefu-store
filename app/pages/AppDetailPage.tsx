@@ -1,3 +1,5 @@
+'use client';
+
 import { useParams, useNavigate } from 'react-router';
 import { ArrowLeft, Download, Star, Monitor, Apple, Globe, CheckCircle, ExternalLink } from 'lucide-react';
 import { Button } from '../components/ui/button';

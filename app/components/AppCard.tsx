@@ -1,3 +1,5 @@
+'use client';
+
 import { motion } from 'motion/react';
 import { Download, Star, Monitor, Apple, Globe } from 'lucide-react';
 import { Card, CardContent } from './ui/card';

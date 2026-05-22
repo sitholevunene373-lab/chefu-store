@@ -1,3 +1,5 @@
+'use client';
+
 import { Link, useLocation } from 'react-router';
 import { Home, Grid3x3, Library, Settings, Package } from 'lucide-react';
 import { cn } from './ui/utils';

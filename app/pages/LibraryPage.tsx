@@ -1,3 +1,5 @@
+'use client';
+
 import { useNavigate } from 'react-router';
 import { Rocket, RefreshCw, Trash2, ArrowUpCircle } from 'lucide-react';
 import { Button } from '../components/ui/button';
