@@ -11,9 +11,10 @@ import { Badge } from '../../components/ui/badge';
 import { Separator } from '../../components/ui/separator';
 import { Progress } from '../../components/ui/progress';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '../../components/ui/carousel';
-import { apps, type OSType } from '../../data/mockData';
+import { apps } from '../../data/mockData';
 import { motion } from 'motion/react';
 import { toast } from 'sonner';
+import { OSType } from '@/app/types';
 
 interface AppDetailPageProps {
   params: {

@@ -1,24 +1,4 @@
-export type OSType = 'Windows' | 'macOS' | 'Linux';
-
-export interface App {
-  id: string;
-  name: string;
-  developer: string;
-  description: string;
-  longDescription: string;
-  category: string;
-  icon: string;
-  rating: number;
-  downloads: number;
-  version: string;
-  size: string;
-  supportedOS: OSType[];
-  screenshots: string[];
-  featured: boolean;
-  trending: boolean;
-  installed?: boolean;
-  hasUpdate?: boolean;
-}
+import { App } from '../types/index';
 
 export const categories = [
   { id: 'all', name: 'All Apps', icon: 'Grid3x3' },
