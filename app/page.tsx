@@ -1,31 +1,37 @@
-'use client';
+import type { Metadata } from 'next';
+import { HomeSearchForm } from './components/HomeSearchForm';
+import { FeaturedAppsSection } from './components/FeaturedAppsSection';
+import { TrendingAppsSection } from './components/TrendingAppsSection';
+import { CategoryGrid } from './components/CategoryGrid';
+import { getFeaturedApps, getTrendingApps } from './data/mockData';
 
-import { BrowserRouter, Routes, Route } from 'react-router';
-import { ThemeProvider } from 'next-themes';
-import { Toaster } from './components/ui/sonner';
-import { AppNavigation } from './components/AppNavigation';
-import { HomePage } from './pages/HomePage';
-import { BrowsePage } from './pages/BrowsePage';
-import { AppDetailPage } from './pages/AppDetailPage';
-import { LibraryPage } from './pages/LibraryPage';
-import { SettingsPage } from './pages/SettingsPage';
+export const metadata: Metadata = {
+  title: 'CheFu Store - Discover Amazing Apps',
+  description: 'Browse thousands of applications for Windows, macOS, and Linux. Find the perfect tools for productivity, development, gaming, and more.',
+  openGraph: {
+    title: 'CheFu Store - Discover Amazing Apps',
+    description: 'Browse thousands of applications for Windows, macOS, and Linux.',
+    url: 'https://chefu.store',
+    type: 'website',
+  },
+};
 
-export default function App() {
+export default function HomePage() {
+  const featuredApps = getFeaturedApps();
+  const trendingApps = getTrendingApps();
+
   return (
-    <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
-      <BrowserRouter>
-        <div className="size-full flex bg-background text-foreground">
-          <AppNavigation />
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/browse" element={<BrowsePage />} />
-            <Route path="/app/:id" element={<AppDetailPage />} />
-            <Route path="/library" element={<LibraryPage />} />
-            <Route path="/settings" element={<SettingsPage />} />
-          </Routes>
-        </div>
-        <Toaster />
-      </BrowserRouter>
-    </ThemeProvider>
+    <div className="max-w-7xl mx-auto p-8 space-y-8">
+      <HomeSearchForm />
+
+      <FeaturedAppsSection apps={featuredApps} />
+
+      <TrendingAppsSection apps={trendingApps} />
+
+      <div>
+        <h2 className="mb-4">Browse by Category</h2>
+        <CategoryGrid />
+      </div>
+    </div>
   );
 }
